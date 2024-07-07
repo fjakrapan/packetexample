@@ -2,6 +2,7 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:packetexample/screen/about_us_screen.dart';
+import 'package:packetexample/screen/calculation_screen.dart';
 import 'package:packetexample/screen/contact_us_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -60,25 +61,37 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: sliders.length,
         itemBuilder: (context, index) => Image.asset(sliders[index]),
       )),
-      bottomNavigationBar:
-          BottomNavigationBar(showUnselectedLabels: true, items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-            backgroundColor: Colors.blue),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-            backgroundColor: Colors.blue),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-            backgroundColor: Colors.blue),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-            backgroundColor: Colors.blue),
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+          showUnselectedLabels: true,
+          onTap: (value) {
+            switch (value) {
+              case 1:
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => CalculationScreen()),
+                );
+                break;
+              default:
+                break;
+            }
+          },
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+                backgroundColor: Colors.blue),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.calculate),
+                label: 'Calculator',
+                backgroundColor: Colors.blue),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+                backgroundColor: Colors.blue),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: 'Settings',
+                backgroundColor: Colors.blue),
+          ]),
     );
   }
 }
